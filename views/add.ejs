@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+  <html>
+    <body>
+      <h1>Add Recipe</h1>
+      <form method="POST" action="/add" onsubmit="return validate()">
+        <input name="name" placeholder="Name" required>
+        <select name="protein">
+          <option>Chicken</option>
+          <option>Beef</option>
+          <option>Tofu</option>
+          <option>Grains</option>
+        </select>
+        <textarea name="instructions"></textarea>
+        <h3>Ingredients</h3>
+        <% ingredients.forEach(i => { %>
+          <label>
+            <input type="checkbox" name="ingredients" value="<%= i.id %>">
+            <%= i.name %>
+          </label><br>
+        <% }) %>
+        <button type="submit">Add</button>
+      </form>
+      <script>
+        function validate() {
+          const name = document.querySelector('[name="name"]').value;
+          if (name.length < 3) {
+            alert('Name too short');
+            return false;
+          }
+          return true;
+        }
+      </script>
+    </body>
+  </html>
