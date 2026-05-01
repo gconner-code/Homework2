@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Recipes</h1>
-<input type="text" id="search" placeholder="Search...">
-<% for (let category in categorized) { %>
-  <h2><%= category %></h2>
-  <ul>
-  <% categorized[category].forEach(r => { %>
-    <li><a href="/recipe/<%= r.id %>"><%= r.name %></a></li>
-  <% }) %>
-  </ul>
-<% } %>
-<script>
-document.getElementById('search').addEventListener('input', function() {
-  const value = this.value.toLowerCase();
-  document.querySelectorAll('li').forEach(li => {
-    li.style.display = li.textContent.toLowerCase().includes(value) ? '' : 'none';
-  });
-});
-</script>
-</body>
+  <body>
+    <h1>Recipes</h1>
+      <input type="text" id="search" placeholder="Search...">
+      <% for (let category in categorized) { %>
+        <h2><%= category %></h2>
+          <ul>
+            <% categorized[category].forEach(r => { %>
+            <li><a href="/recipe/<%= r.id %>"><%= r.name %></a></li>
+            <% }) %>
+          </ul>
+      <% } %>
+    <script>
+      document.getElementById('search').addEventListener('input', function() {
+        const value = this.value.toLowerCase();
+        document.querySelectorAll('li').forEach(li => {
+          li.style.display = li.textContent.toLowerCase().includes(value) ? '' : 'none';
+        });
+      });
+    </script>
+  </body>
 </html>
