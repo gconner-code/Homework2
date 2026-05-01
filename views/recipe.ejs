@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+  <html>
+    <body>
+      <h1><%= recipe.name %></h1>
+      <p><%= recipe.instructions %></p>
+      <h3>Ingredients</h3>
+        <ul>
+          <% ingredients.forEach(i => { %>
+            <li class="ingredient" data-info="<%= i.info %>"><%= i.name %></li>
+          <% }) %>
+        </ul>
+      <div id="popup" style="display:none; position:absolute; background:#eee; padding:10px;"></div>
+      <script>
+        document.querySelectorAll('.ingredient').forEach(el => {
+          el.addEventListener('mouseover', e => {
+            const popup = document.getElementById('popup');
+            popup.innerText = el.dataset.info;
+            popup.style.display = 'block';
+            popup.style.top = e.pageY + 'px';
+            popup.style.left = e.pageX + 'px';
+          });
+          el.addEventListener('mouseout', () => {
+            document.getElementById('popup').style.display = 'none';
+          });
+        });
+      </script>
+    </body>
+  </html>
