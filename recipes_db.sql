@@ -29,7 +29,7 @@ INSERT INTO ingredients (name, info) VALUES
 ('Beef', 'The best'),
 ('Tofu', 'Plant?');
 
-INSERT INTO recipes (name, protein, intructions) VALUES
+INSERT INTO recipes (name, protein, instructions) VALUES
 ('Chicken & rice bowl', 'Chicken', 'Seacon the chicken with salt and pepper. Fry the rice in the oil of your choice and add garlic for flavor.'),
 ('Just beef', 'Beef', 'Just cook ground beef with salt and pepper.'),
 ('Tofu stir fry', 'Tofu', 'fry the tofu and some rice in oil.');
