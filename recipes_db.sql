@@ -32,7 +32,7 @@ INSERT INTO ingredients (name, info) VALUES
 INSERT INTO recipes (name, protein, instructions) VALUES
 ('Chicken & rice bowl', 'Chicken', 'Seacon the chicken with salt and pepper. Fry the rice in the oil of your choice and add garlic for flavor.'),
 ('Just beef', 'Beef', 'Just cook ground beef with salt and pepper.'),
-('Tofu stir fry', 'Tofu', 'fry the tofu and some rice in oil.');
+('Tofu stir fry', 'Tofu', 'Fry the tofu and some rice in oil.');
 
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id) VALUES
 (1,3),
