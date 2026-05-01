@@ -12,26 +12,22 @@ app.get('/recipes', (req, res) => {
   const query = `SELECT * FROM recipes`;
   db.query(query, (err, results) => {
     if (err) throw err;
-
     const categorized = {
       Chicken: [],
       Beef: [],
       Tofu: [],
       Grains: []
     };
-
     results.forEach(r => {
       if (categorized[r.protein]) {
         categorized[r.protein].push(r);
       }
     });
-
     res.render('recipes', { categorized });
   });
 });
 app.get('/recipe/:id', (req, res) => {
   const recipeId = req.params.id;
-
   const recipeQuery = 'SELECT * FROM recipes WHERE id = ?';
   const ingredientQuery = `
     SELECT ingredients.name, ingredients.info
