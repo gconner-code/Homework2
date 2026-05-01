@@ -28,11 +28,27 @@ app.get('/recipes', (req, res) => {
 });
 app.get('/recipe/:id', (req, res) => {
   const recipeId = req.params.id;
+
   const recipeQuery = 'SELECT * FROM recipes WHERE id = ?';
   const ingredientQuery = `
     SELECT ingredients.name, ingredients.info
     FROM ingredients
-    JOIN recipe_ingredients ON ingredients.id = recipe_ingredients.ingredient_id
+    JOIN recipe_ingredients 
+    ON ingredients.id = recipe_ingredients.ingredient_id
     WHERE recipe_ingredients.recipe_id = ?
   `;
+
+  db.query(recipeQuery, [recipeId], (err, recipeResult) => {
+    if (err) throw err;
+
+    db.query(ingredientQuery, [recipeId], (err, ingredients) => {
+      if (err) throw err;
+
+      res.render('recipe', {
+        recipe: recipeResult[0],
+        ingredients: ingredients
+      });
+    });
+  });
+});
 app.listen(3000, () => console.log('Server running on port 3000'));
